@@ -11,6 +11,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <RouterLink to="/" class="text-green-700 hover:text-green-600">Home</RouterLink>
       <RouterLink to="/about" class="text-green-700 hover:text-green-600">About</RouterLink>
       <RouterLink to="/dashboard" class="text-green-700 hover:text-green-600">Dashboard</RouterLink>
+      <RouterLink to="/login" class="text-green-700 hover:text-green-600">Login</RouterLink>
     </nav>
   </header>
   <main class="py-12 px-14">
