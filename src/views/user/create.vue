@@ -23,26 +23,51 @@
                     <input type="password" v-model="password" class="flex w-full h-10 px-3 py-5 text-sm bg-white border-2 border-green-500 rounded-md ring-offset-background focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50" />
                 </div>
             </div>
-            <div class="flex justify-end gap-3">
-                <button class="px-4 py-1 text-sm font-semibold text-gray-500 uppercase bg-gray-100 rounded-md hover:bg-gray-200" @click="clear">clear</button>
-                <button class="px-4 py-1 text-sm font-semibold text-gray-100 uppercase bg-green-500 rounded-md hover:bg-green-600" @click="save">save</button>
-                <button class="px-4 py-1 text-sm font-semibold text-gray-100 uppercase bg-green-500 rounded-md hover:bg-green-600" @click="add">push</button>
+            <div class="flex justify-center gap-3">
+                <!-- <button class="px-4 py-1 text-sm font-semibold text-gray-500 uppercase bg-gray-100 rounded-md hover:bg-gray-200" @click="clear">clear</button>
+                <button class="px-4 py-1 text-sm font-semibold text-gray-100 uppercase bg-green-500 rounded-md hover:bg-green-600">save</button>
+                <button class="px-4 py-1 text-sm font-semibold text-gray-100 uppercase bg-green-500 rounded-md hover:bg-green-600" @click="add">push</button> -->
+                <Button label="clear"  @click="clear" />
+                <Button label="save"  @click="save" raised  />
+                <Button label="add"  @click="add" />
             </div>
         </div>
 
         <div class="p-5 space-y-5 border rounded-lg md:w-1/2">
-            <div class=""></div>
+            <div class="w-full overflow-auto bg-scroll max-h-96">
+                <div class="table w-full rouded-lg ">
+                    <div class="sticky top-0 table-header-group border border-collapse bg-slate-300">
+                        <div class="table-row text-sm font-bold text-gray-500">
+                            <div class="table-cell px-5 py-4 text-sm font-bold text-left text-gray-500 border border-slate-400">Id</div>
+                            <div class="table-cell px-5 py-4 text-sm font-bold text-left text-gray-500 border border-slate-400">Name</div>
+                            <div class="table-cell px-5 py-4 text-sm font-bold text-left text-gray-500 border border-slate-400">Email</div>
+                            <div class="table-cell px-5 py-4 text-sm font-bold text-left text-gray-500 border border-slate-400">Password</div>
+                        </div>
+                    </div>
+                    <div class="table-row-group">
+                        <div class="table-row " v-for="user in users" :key="user.id">
+                            <div class="table-cell px-5 py-4 text-sm font-medium text-gray-500 border border-slate-400"> {{user.id}} </div>
+                            <div class="table-cell px-5 py-4 text-sm font-medium text-gray-500 border border-slate-400"> {{user.name}} </div>
+                            <div class="table-cell px-5 py-4 text-sm font-medium text-gray-500 border border-slate-400"> {{user.email}} </div>
+                            <div class="table-cell px-5 py-4 text-sm font-medium text-gray-500 border border-slate-400"> {{user.password}} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
 </template>
 <script>
 import InputLabel from '@/components/setup/input-label.vue'
+import Button from 'primevue/button';
+
     export default{
         name: 'user-create',
         data(){
             return {
                 users:[],
+                id:0,
                 name:null,
                 email:null,
                 password:null,
@@ -58,7 +83,9 @@ import InputLabel from '@/components/setup/input-label.vue'
                 this.password=null
             },
             add(){
-                this.users.push({name:this.name,email:this.email,password:this.password})
+                this.id++
+                this.users.push({id:this.id,name:this.name,email:this.email,password:this.password})
+                // this.clear()
             }
         }
     }

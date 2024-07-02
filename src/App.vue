@@ -3,8 +3,8 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header class="flex justify-between py-4 shadow-lg px-44">
-    <a href="" class="rounded-full h-100">
+  <header class="flex items-center justify-between py-0 shadow-lg px-44">
+    <a href="" class="rounded-full size-10">
       <img alt="Vue logo" class="w-full h-full" src="@/assets/logo.svg" width="125" height="125" />
     </a>
     <nav class="flex gap-5 ">
