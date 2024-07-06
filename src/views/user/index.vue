@@ -1,6 +1,5 @@
 <template>
-    <img src="https://qms.dvl.to/storage/apperal/1719379972-t1w9i.jpeg" alt="">
-    <!-- <Listbox v-model="customer" :options="dataSource" optionLabel="name" class="w-full md:w-56" /> -->
+    <Listbox v-model="customer" :options="dataSource" optionLabel="text" class="w-full md:w-56" />
 </template>
 
 <script>
