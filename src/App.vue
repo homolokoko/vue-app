@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+
 </script>
 
 <template>
@@ -14,8 +15,8 @@ import { RouterLink, RouterView } from 'vue-router'
       <RouterLink to="/login" class="text-green-600 hover:text-green-500">Login</RouterLink>
     </nav>
   </header>
-  <main class="">
-    <div class="h-auto p-5 mx-auto lg:w-8/12">
+  <main class="p-10">
+    <div class="h-auto p-5 mx-auto lg:w-full bg-white rounded-md border shadow-lg">
       <RouterView />
     </div>
   </main>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.0.0-rc.2",
+    "lodash": "^4.17.21",
     "primevue": "^4.0.0-rc.2",
     "tailwindcss-primeui": "^0.3.1",
     "vue": "^3.4.21",

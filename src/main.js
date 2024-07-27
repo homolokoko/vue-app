@@ -14,6 +14,10 @@ import Checkbox from 'primevue/checkbox';
 import Toolbar from 'primevue/toolbar';
 import SplitButton from 'primevue/splitbutton';
 import FileUpload from 'primevue/fileupload';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import ColumnGroup from 'primevue/columngroup';
+import Row from 'primevue/row';
 
 
 const app = createApp(App)
@@ -26,7 +30,7 @@ app.use(PrimeVue, {
         preset: Aura,
         options: {
             prefix: 'p',
-            darkModeSelector: 'system',
+            darkModeSelector: '.bg-dark',
             cssLayer: false
         }
     }
@@ -41,3 +45,14 @@ app.component('Checkbox', Checkbox);
 app.component('Toolbar', Toolbar);
 app.component('SplitButton', SplitButton);
 app.component('FileUpload', FileUpload);
+app.component('DataTable',DataTable);
+app.component('Column',Column);
+app.component('ColumnGroup',ColumnGroup);
+app.component('Row',Row);
+
+
+
+
+import TrashCanIcon from '@/components/icons/trash-can.vue';
+
+app.component('TrashCanIcon',TrashCanIcon)

@@ -29,11 +29,28 @@
                 <button class="px-4 py-1 text-sm font-semibold text-gray-100 uppercase bg-green-500 rounded-md hover:bg-green-600" @click="add">push</button> -->
                 <Button label="clear"  @click="clear" />
                 <Button label="save"  @click="save" raised  />
-                <Button label="add"  @click="add" />
+                <Button label="push up"  @click="pushUp" />
             </div>
         </div>
 
-        <div class="p-5 space-y-5 border rounded-lg md:w-1/2">
+        <DataTable :value="users" tableStyle="min-width: 50rem" showGridlines paginator :rows="5" :rowsPerPageOptions="[5, 10, 20, 50]"
+        paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+        currentPageReportTemplate="{first} to {last} of {totalRecords}">
+            <Column field="id" header="Id" sortable ></Column>
+            <Column field="name" header="Name"></Column>
+            <Column field="email" header="Email"></Column>
+            <Column field="password" header="Password"></Column>
+            <Column header="Delete" field="id">
+            <template  #body="{ data }">
+                <button  @click="popOut(data.id)">
+                    <TrashCanIcon />
+                </button>
+                <!-- <Button label="delete" @click="popOut(data.id)"/> -->
+            </template>
+        </Column>
+        </DataTable>
+
+        <!-- <div class="p-5 space-y-5 border rounded-lg md:w-1/2">
             <div class="w-full overflow-auto bg-scroll max-h-96">
                 <div class="table w-full rouded-lg ">
                     <div class="sticky top-0 table-header-group border border-collapse bg-slate-300">
@@ -52,16 +69,17 @@
                             <div class="table-cell px-5 py-4 text-sm font-medium text-gray-500 border border-slate-400"> {{user.password}} </div>
                         </div>
                     </div>
+                    <div class=""></div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+        
 
     </div>
 </template>
 <script>
-import InputLabel from '@/components/setup/input-label.vue'
-import Button from 'primevue/button';
-
+import _ from 'lodash';
     export default{
         name: 'user-create',
         data(){
@@ -82,11 +100,15 @@ import Button from 'primevue/button';
                 this.email=null
                 this.password=null
             },
-            add(){
+            pushUp(){
                 this.id++
                 this.users.push({id:this.id,name:this.name,email:this.email,password:this.password})
                 // this.clear()
+            },
+            popOut(id){
+                _.remove(this.users,function(usr){return usr.id==id})
             }
-        }
+        },
+
     }
 </script>
